@@ -1,0 +1,189 @@
+<DOCTYPE html>
+    <html>
+    <head>
+        <title>The Lion King</title>
+        <link rel="icon" href="The Lion King">
+        <link rel="shortcut icon" href="mini.png">
+        <link rel="stylesheet" href="bootstrap.css">
+        <link rel="stylesheet" href="bootstrap.min.css">
+    </head>
+    <style>
+        :root{
+            --base:#ffc600;
+            --spacing:400px;
+            --blur:1px;
+            --butt:#228B22;
+        }
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+         body{
+            background-image: url(b1dac0470bdf2f7cc0c559599fba19f9.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+        .img{
+            background-image: url(1829337658.png);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            width: 500px;
+            height: 500px;
+            margin-top: 40px;
+            position: absolute;
+            z-index: 3;
+            margin-left: var(--spacing);
+            filter: blur(var(--blur));
+        }
+        h1,h3,h2{
+            text-align: center;
+            text-shadow: 2px 2px 2px black;
+            color:var(--base);
+        }
+        h1{
+            margin-top: 150px;
+            font-size: 60px;
+        }
+        h2{
+            font-size: 40px;
+        }
+        .btn-warning{
+            color: black;
+           background-color: var(--base);
+           border-color: var(--base);
+           font-weight: bold;
+            font-size: 20px;
+        }
+        .btn-warning:hover{
+            color: black;
+        }
+        .btn-success{
+            color: black;
+           background-color: var(--butt);
+           border-color: var(--butt);
+           font-weight: bold;
+            font-size: 20px;
+        }
+        .btn-succes:hover{
+            color: black;
+        }
+        .btn{
+            margin-left: 60px;
+            margin-top: 48px;
+            width: 250px;
+            height: 45px;
+        }
+        .btn:hover{
+            color:black;
+        }
+        .overlay {
+                   position: static;
+                  width: 400px; 
+                  margin-top: -271px;
+                  height: 872px;
+                  background-color: rgba(0,0,0,0.5); 
+                  z-index: 2; 
+                }
+            .row {
+                margin-right: 0px;
+                margin-left: -7px;
+            }
+        lable
+        {
+                color: var(--base);
+                font-size: 26
+        }
+        input[type='range']{
+            -webkit-appearance: none;
+             background-color: var(--butt);
+             height: 10px;
+             border-radius: 10px;
+             margin: 10px;
+        }
+    </style>
+    <body>
+         <audio autoplay loop>
+          <source src="clock-ticking-2.mp3" type="audio/mpeg">
+        </audio>
+        <div class="container-fluied">
+            <div class="row">
+                <h1>The Lion King</h1>
+                <h3>Sub Story</h3>
+                 <div class="overlay col-md-3 col-sm-12 col-xs-12">
+                 <h2>Controls</h2>
+                     <br>
+                     <br>
+                     <br>
+                     <div class="controls">
+                     <lable for="spacing">Position : </lable>
+                     <input type="range" name="spacing" min="10" max="800" data-sizing="px" >
+                     <lable for="blur">Blur : </lable>
+                     <input type="range" name="blur" min="0" max="10" data-sizing="px" >
+                         <br>
+                     <lable for="color_base">Color Base : </lable>
+                     <input type="color" name="base" value="#ffc600" >
+                         <br>
+                         <br>
+                     <lable for="color_base">StopColor Base : </lable>
+                     <input type="color" name="butt" value="#228B22" >
+                     </div>
+                </div>
+                <div id="character" class="img col-md-6 col-sm-12 col-xs-12">
+                     
+                </div>
+                <div class="overlay col-md-3 col-sm-12 col-xs-12" style="margin-left: 555px;">
+                    <h2>Sounds</h2>
+                    <button  onclick="story1()" class="btn btn-warning">Circle of life</button>
+                    <button  onclick="stop1()" class="btn btn-success" style="width: 100px; margin-left: 130px;">Stop</button>
+                    <button  onclick="story2()" class="btn btn-warning">Simba & Nala</button>
+                    <button  onclick="stop2()" class="btn btn-success" style="width: 100px;  margin-left: 130px;">Stop</button>
+                    <button  onclick="story3()" class="btn btn-warning">Hakuna Matata</button>
+                    <button  onclick="stop3()" class="btn btn-success" style="width: 100px;  margin-left: 130px;">Stop</button>
+        </div>
+        </div>
+        </div>
+        <script>
+            var a = new Audio('sounds/circle_of_life.mp3');
+            var b = new Audio('sounds/Simba&Nala.mp3');
+            var c = new Audio('sounds/hakuna_matata.mp3');
+           function story1()
+            {
+                a.play();
+                document.getElementById("character").style.backgroundImage = "url(circle_of_life.png)";
+            }
+            function story2()
+            {
+                b.play();
+                document.getElementById("character").style.backgroundImage = "url(simba&nala.png)";
+            }
+            function story3()
+            {
+                c.play();
+                document.getElementById("character").style.backgroundImage = "url(Lion-King-PNG-Image-28840.png)";
+            }
+            function stop1()
+            {
+                a.pause();
+            }
+            function stop2()
+            {
+                b.pause();
+            }
+            function stop3()
+            {
+                c.pause();
+            }
+            const inputs = document.querySelectorAll('.controls input');
+            function handleUpdate()
+            {
+                const suffix = this.dataset.sizing || '';
+                document.documentElement.style.setProperty('--'+this.name,this.value+suffix);
+            }
+            inputs.forEach(input => input.addEventListener('change',handleUpdate));
+            
+        </script> 
+    </body>
+    </html>
